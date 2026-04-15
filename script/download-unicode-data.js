@@ -1,8 +1,13 @@
-let version = '15.1'
+let version = '17.0'
+let maybeSubVersion = '0'
 
 // npm run download 13.0
 if (process.argv[2]) {
   version = Number(process.argv[2]).toFixed(1).toString()
+}
+// npm run download 17.0 0
+if (process.argv[3]) {
+  maybeSubVersion = Number(process.argv[3]).toString()
 }
 
 const fs = require('fs')
@@ -11,7 +16,7 @@ const files = {
   // Complete emoji list with version
   'emoji-order.txt': `https://unicode.org/emoji/charts-${version}/emoji-ordering.txt`,
   // Grouped emoji list with qualifier
-  'emoji-group.txt': `https://unicode.org/Public/emoji/${version}/emoji-test.txt`,
+  'emoji-group.txt': `https://unicode.org/Public/${version}${maybeSubVersion ? `.${maybeSubVersion}` : ''}/emoji/emoji-test.txt`,
   // Emoji count
   'emoji-counts.html': `https://unicode.org/emoji/charts-${version}/emoji-counts.html`
 }
