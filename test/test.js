@@ -33,7 +33,7 @@ test('data-by-group.json', function(t) {
   const testGroup = 'People & Body';
   for (const groupName in stats.groups) {
     const groupIndex = data.findIndex((element) => element.name === groupName)
-    t.notEqual(groupIndex, -1, `Unable to find the ${groupName} group.`)
+    t.notEqual(groupIndex, -1, `${groupName} group exists.`)
     if (groupIndex === -1) continue;
     if (groupName === testGroup) {
       // Ensure emoji count adds up to expected number of variations
